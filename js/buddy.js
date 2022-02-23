@@ -9,7 +9,7 @@ const displayBuddies = (data) => {
     const buddiesDiv = document.getElementById('buddies');
     buddies.forEach(buddy => {
         const p = document.createElement('p');
-        p.innerText = buddy.gender;
+        p.innerText = `Gender : ${buddy.gender},      NAME: ${buddy.name.title} ${buddy.name.first} ${buddy.name.last}`;
         buddiesDiv.appendChild(p);
     });
 };
