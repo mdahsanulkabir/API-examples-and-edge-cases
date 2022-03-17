@@ -10,7 +10,8 @@ const searchFood = () => {
     `;
     fetch(url)
     .then(res => res.json())
-    .then(data => displaySearchResult(data.meals));
+    .then(data => displaySearchResult(data.meals))
+    .catch(error => console.log(error));
 }
 
 const displaySearchResult = meals => {

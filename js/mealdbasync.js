@@ -6,11 +6,12 @@ const searchFood = () => {
     searchField.value = '';
 
     //load data
-    const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}
+    const url = `https://www.themealdb.com/api/json/v91/1/search.php?s=${searchText}
     `;
     fetch(url)
     .then(res => res.json())
-    .then(data => displaySearchResult(data.meals));
+    .then(data => displaySearchResult(data.meals))
+    .catch(error => console.log(error))
 }
 
 const displaySearchResult = meals => {
@@ -48,10 +49,14 @@ const loadMealDetail = async mealId => {
     https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}
     `;
 
-    const res = await fetch(url);
-    const data = await res.json();
-    displayMealDetail(data.meals[0]);
-
+    try{
+        const res = await fetch(url);
+        const data = await res.json();
+        displayMealDetail(data.meals[0]);
+    }
+    catch(error){
+        console.log(error);
+    }
     // fetch(url)
     //     .then(res => res.json())
     //     .then(data => displayMealDetail(data.meals[0]));
